@@ -43,7 +43,7 @@ Needs `ELEVENLABS_API_KEY` in your environment (`~/.profile`), `ffmpeg`, and Man
 /keep-feature-context resume       # pick up an unfinished one
 /keep-feature-context done         # wrap up and archive
 ```
-On first use in a project it runs a preflight: it checks the project's `AGENTS.md` (or `CLAUDE.md`) for a `## Dev team specifics` section (stack, check commands, e2e/QA, branch/PR style, delivery mode, hard stops, design docs, log location), asks you for whatever is missing, and writes it there. The dev-team agents read that section.
+On first use in a project it runs a preflight and writes the answers into the project's `AGENTS.md` (or `CLAUDE.md`). Code projects get a `## Dev team specifics` section (stack, check commands, e2e/QA, branch/PR style, delivery mode, hard stops, design docs, log location) that the dev-team agents read. Other projects (video, content, notes, with or without git) get only a short `## Feature context` section: what the project is and where logs go.
 Where logs live is resolved per project: a path named in the project's `CLAUDE.md`/`AGENTS.md`, else `<repo>/.claude/feature-context/` (committed, default for new projects), else an existing legacy `~/.claude/projects/<repo>/feature-context/`.
 
 ### Dev team (team-leader, architect, swe, qa, reviewer)
