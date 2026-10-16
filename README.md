@@ -39,7 +39,7 @@ Needs `ELEVENLABS_API_KEY` in your environment (`~/.profile`), `ffmpeg`, and Man
 
 ### keep-feature-context
 ```
-/keep-feature-context new <name>   # start logging a feature
+/keep-feature-context new <name>   # start logging a feature (backfills what this session already did)
 /keep-feature-context resume       # pick up an unfinished one
 /keep-feature-context done         # wrap up and archive
 ```

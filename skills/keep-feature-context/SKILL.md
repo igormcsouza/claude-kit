@@ -66,7 +66,8 @@ Never write secrets/credentials in logs. In a git repo with an in-repo store: co
 ### `new <name>`
 1. slug = kebab-case of name (e.g. `hybrid-aws-deployment`). Refuse if `active/<slug>.md` exists (suggest `resume`).
 2. Create `active/<slug>.md` from the template below. Fill Goal from the user's words; ask only if truly unknown.
-3. From now on in THIS session: **log automatically** (see Logging). Tell the user the file path.
+3. **Backfill from this session.** If the conversation so far already holds work for this feature (requests, decisions, problems, steps, branches/PRs), write it into the log before continuing: PO requests under Requests, decisions under Decisions, problems under Problems, steps under Progress log, and the remaining work as Next steps. Prefix each backfilled entry with `(backfilled)` and use the real time when you know it, else the session date. Only what actually happened in this conversation: never invent, never read other sessions' transcripts. If nothing relevant happened yet, skip this step.
+4. From now on in THIS session: **log automatically** (see Logging). Tell the user the file path and, if you backfilled, say so in one line.
 
 ### `resume`
 1. List `active/*.md`: for each show slug, Goal (1 line), Status, last-updated, and the top 3 Next Steps.
