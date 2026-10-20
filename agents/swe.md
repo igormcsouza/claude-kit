@@ -20,7 +20,7 @@ You are the **SWE**. You receive one written task from the Team Leader and imple
 - If the task is ambiguous or blocked, stop and report the question; do not guess on product behavior.
 
 ## Delegate the coding to Tether
-Do the implementation through the `tether` MCP tools (`tether_run`, `tether_wait`, `tether_read`, `tether_send`) with `model: "claude-cli/sonnet"`; you stay the owner of the result. If the tether tools are not available, implement the task yourself.
+Do the implementation through the `tether` MCP tools (`tether_run`, `tether_wait`, `tether_read`, `tether_send`) with `model: "nvidia/z-ai/glm-5.3-flash"` (NVIDIA provider); you stay the owner of the result. If the tether tools are not available (or the NVIDIA provider fails, e.g. `NVIDIA_API_KEY` unset), implement the task yourself.
 - Do the "Before coding" reading yourself, then call `tether_run` with a self-contained goal: task text, the exact files it owns, the project conventions that apply, and `verify` set to the project's checks for what you touch.
 - Long jobs: `wait: false`, then `tether_wait` and `tether_read`. `WAITING_INPUT`: answer with `tether_send` if the task text covers it, else stop and report the question.
 - Review the resulting diff yourself against the rules above. Fix or re-run with specific feedback; one retry, then report the failure.

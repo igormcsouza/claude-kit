@@ -18,7 +18,7 @@ git clone <this repo> ~/Projects/claude-kit   # or use your existing copy
 ~/Projects/claude-kit/install.sh
 ```
 
-`install.sh` symlinks each `skills/<name>/` dir and each `agents/*.md` file into `~/.claude/skills/` and `~/.claude/agents/`. Safe to rerun; it never overwrites a real file (it prints `SKIPPED` instead). Start a new Claude Code session afterwards: skills and agents are discovered at session start.
+`install.sh` first installs/upgrades [tether](https://pypi.org/project/tether-sdk/) (`uv tool install --upgrade "tether-sdk[mcp]"`), adds the `nvidia` provider and the `tether` MCP server if missing (export `NVIDIA_API_KEY`). `swe` codes through tether on `nvidia/z-ai/glm-5.3-flash`; every other agent uses the default Claude subagent. Then it symlinks each `skills/<name>/` dir and each `agents/*.md` file into `~/.claude/skills/` and `~/.claude/agents/`. Safe to rerun; it never overwrites a real file (it prints `SKIPPED` instead). Start a new Claude Code session afterwards: skills and agents are discovered at session start.
 
 Check: `ls -l ~/.claude/skills ~/.claude/agents` should show arrows into this repo.
 

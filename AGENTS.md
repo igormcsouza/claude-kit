@@ -13,10 +13,11 @@ Instructions for an AI agent (or a human) setting up this kit on a machine or in
    ```bash
    ./install.sh
    ```
+   First step: installs/upgrades `tether-sdk[mcp]` via `uv`, adds the `nvidia` provider to `~/.tether/providers.yaml` if missing, registers the `tether` MCP server (user scope). Needs `NVIDIA_API_KEY` in the user's environment; never print or commit it.
    It creates:
    - `~/.claude/skills/<skill>` -> `<kit>/skills/<skill>` (one symlink per skill dir)
    - `~/.claude/agents/<agent>.md` -> `<kit>/agents/<agent>.md` (one symlink per agent file)
-3. Verify: `ls -l ~/.claude/skills ~/.claude/agents` shows links into the kit, and no `SKIPPED` lines were printed. A `SKIPPED` line means a real file/dir with that name already exists; ask the user before moving it.
+3. Verify: `tether --version` works; no `WARN` lines; `ls -l ~/.claude/skills ~/.claude/agents` shows links into the kit, and no `SKIPPED` lines were printed. A `SKIPPED` line means a real file/dir with that name already exists; ask the user before moving it.
 4. Tell the user to start a new Claude Code session (skills and agents load at session start).
 
 Manual equivalent for one skill and one agent:
