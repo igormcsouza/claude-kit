@@ -13,7 +13,7 @@ if command -v tether >/dev/null; then
   PY="${TETHER_HOME:-$HOME/.tether}/providers.yaml"; mkdir -p "$(dirname "$PY")"
   grep -q '^nvidia:' "$PY" 2>/dev/null || { printf 'nvidia:\n  kind: openai\n  base_url: https://integrate.api.nvidia.com/v1\n  api_key_env: NVIDIA_API_KEY\n' >> "$PY"; echo "added    nvidia provider to $PY"; }
   command -v claude >/dev/null && ! claude mcp get tether >/dev/null 2>&1 && claude mcp add --scope user tether -- "$(command -v tether)" mcp >/dev/null && echo "added    tether MCP server (user scope)"
-  [ -n "${NVIDIA_API_KEY:-}" ] || echo "WARN     NVIDIA_API_KEY not set in this shell; export it (e.g. ~/.profile) so swe can use nvidia/z-ai/glm-5.3-flash"
+  [ -n "${NVIDIA_API_KEY:-}" ] || grep -qs 'NVIDIA_API_KEY' "$HOME/.profile" "$HOME/.bashrc" "$HOME/.zshrc" || echo "WARN     NVIDIA_API_KEY not found in env or ~/.profile; export it so swe can use nvidia/z-ai/glm-5.3-flash"
 fi
 link() { # link <source> <target>
   if [ -L "$2" ]; then
